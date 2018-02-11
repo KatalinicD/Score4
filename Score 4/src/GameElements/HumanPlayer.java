@@ -1,9 +1,9 @@
 package GameElements;
 
-public class Player {
+public class HumanPlayer {
 	private String name;
 	
-	public Player (String identity) {
+	public HumanPlayer (String identity) {
 		name=identity;
 	}
 
