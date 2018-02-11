@@ -8,5 +8,8 @@ public class Peg {
 		position=place;
 		array=new Bead[4];
 	}
+	public int returnPosition() {
+		return this.position;
+	}
 
 }

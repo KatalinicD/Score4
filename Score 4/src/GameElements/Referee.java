@@ -5,4 +5,7 @@ public class Referee {
      public Referee(String identity) {
     	 name=identity;
      }
+     public void start() {
+    	 
+     }
 }
