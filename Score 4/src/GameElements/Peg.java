@@ -1,12 +1,12 @@
 package GameElements;
 
 public class Peg {
-	private int [] array;
+	private Bead [] array;
 	private int position;
 	
 	public Peg (int place) {
 		position=place;
-		array=new int[4];
+		array=new Bead[4];
 	}
 
 }
