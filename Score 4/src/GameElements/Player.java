@@ -15,6 +15,6 @@ public class Player {
 	}
 
 	public boolean isBlack() {
-		return (this.colour.isBlack());
+		return (colour.isBlack());
 	}
 }
