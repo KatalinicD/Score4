@@ -14,5 +14,7 @@ public class Player {
 		colour=Colour.Black;
 	}
 
-	
+	public boolean isBlack() {
+		return (this.colour.isBlack());
+	}
 }
