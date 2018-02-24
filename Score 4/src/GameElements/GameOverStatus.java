@@ -1,4 +1,4 @@
-package ca.unbc.cpsc.score4;
+package GameElements;
 
 public enum GameOverStatus {
 	
