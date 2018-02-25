@@ -19,4 +19,9 @@ public enum GameOverStatus {
 	public boolean isDraw() {
 		return this==DRAW;
 	}
+	
+	// this method returns a GameOverStatus for later purposes //
+	public GameOverStatus noteGameOver() {
+		return this;
+	}
 }
