@@ -1,22 +1,28 @@
 package GameElements;
 
-public class Player {
+public class Player implements Player{
 	
 	private final int id;
-	//private final Colour colour; Requires a Colour enum
+	private final Colour colour;
+	
+	//Unsure about these member variables, need input
+	int opponentsId;
+	
 	
 	//Player constructor
 	public Player(int identification){
 		id = identification;
-		//Colour = null; This will require the Referee to call startGameAs(Colour c)
+		colour = null; //A player object will be assigned a color by the referee
 	}
 	
 	public void reset(){
-		//This method will erase the last recorded Location 
+		id = 0;
+		colour = null;
+		opponentsId = 0;
 	}
 	
 	public void noteOpponentsId(int id){
-		//Not sure if we need this information for anything, but we need the method
+		opponentsId = id;
 	}
 	
 	/*public Location requestMoveLocation(){
@@ -37,9 +43,8 @@ public class Player {
 	}
 	*/
 	
-	/*public void noteGameOver(GameOverStatus ...){
-	*Require the GameOverStatus enum
-	*	
+	/*public void noteGameOver(GameOverStatus gameoverstatus){
+	 * Will come back to work on this
 	}
 	*/
 }

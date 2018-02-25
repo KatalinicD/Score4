@@ -1,18 +1,16 @@
 package GameElements;
 
-public enum Colour {
-    Black, White;
-	private Colour colour;
-	private boolean isBlack;
-	private boolean isWhite;
+public enum Colour implements Colour{
+	Black,White;
 	
+	// this checks if the colour is black //
 	public boolean isBlack() { 
-		if (this.colour==Black) {
-	    return true; }
-		else return false;
-		
+		return this==Black;	
 	}
-	
+	// this checks if the colour is white //
+	public boolean isWhite() {
+		return this==White;
+	}
 
 	
 }
