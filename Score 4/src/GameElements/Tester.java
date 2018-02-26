@@ -8,6 +8,10 @@ public class Tester {
 		Colour colour=Colour.Black;
 		boolean t=colour.isBlack();
 		System.out.println(t);
+		GameOverStatus gse=GameOverStatus.WIN;
+		
+		
+		
 	}
 
 }

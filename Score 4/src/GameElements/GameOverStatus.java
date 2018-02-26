@@ -21,7 +21,9 @@ public enum GameOverStatus {
 	}
 	
 	// this method returns a GameOverStatus for later purposes //
-	public GameOverStatus noteGameOver() {
+	public GameOverStatus GameOverStatus() {
 		return this;
 	}
-}
+	
+	}
+
