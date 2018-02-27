@@ -7,18 +7,21 @@ public class Player implements Player{
 	
 	//Unsure about these member variables, need input
 	int opponentsId;
+	GameOverStatus gamestatus;
 	
 	
 	//Player constructor
 	public Player(int identification){
 		id = identification;
 		colour = null; //A player object will be assigned a color by the referee
+		gamestatus = null;
 	}
 	
 	public void reset(){
 		id = 0;
 		colour = null;
 		opponentsId = 0;
+		gamestatus = null;
 	}
 	
 	public void noteOpponentsId(int id){
@@ -43,8 +46,6 @@ public class Player implements Player{
 	}
 	*/
 	
-	/*public void noteGameOver(GameOverStatus gameoverstatus){
-	 * Will come back to work on this
-	}
-	*/
+	public void noteGameOver(GameOverStatus gameoverstatus){
+		gamestatus = gameoverstatus;
 }
