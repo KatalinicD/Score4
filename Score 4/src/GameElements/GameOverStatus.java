@@ -20,10 +20,5 @@ public enum GameOverStatus {
 		return this==DRAW;
 	}
 	
-	// this method returns a GameOverStatus for later purposes //
-	public GameOverStatus GameOverStatus() {
-		return this;
-	}
-	
 	}
 
