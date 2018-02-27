@@ -12,11 +12,7 @@ public class Peg {
 		array=new Bead[4];
 	}
 	public Peg getPeg(Location ell) {
-		return getPeg(ell.getRow(), ell,getColumn());
-	}
-	
-	public Peg getPeg(int r, int c) {
-		return this.[r][c];
+		return getPeg(ell.getRow(), ell.getColumn());
 	}
 
 }

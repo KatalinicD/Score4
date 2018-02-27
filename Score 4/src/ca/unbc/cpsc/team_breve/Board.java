@@ -15,4 +15,9 @@ public class Board {
 			}
 
 	}
+	
+	public Peg getPeg(int r, int c) {
+		return board [r][c];
+	}
+	
 }
