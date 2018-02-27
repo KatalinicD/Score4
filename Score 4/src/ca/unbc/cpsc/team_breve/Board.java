@@ -16,6 +16,10 @@ public class Board {
 
 	}
 	
+	public Peg getPeg(Location ell) {
+		return getPeg(ell.getRow(), ell.getColumn());
+	}
+	
 	public Peg getPeg(int r, int c) {
 		return board [r][c];
 	}

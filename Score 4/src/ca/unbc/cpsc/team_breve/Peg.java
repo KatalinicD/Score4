@@ -11,8 +11,5 @@ public class Peg {
 		Location loc=new Location(row, column);
 		array=new Bead[4];
 	}
-	public Peg getPeg(Location ell) {
-		return getPeg(ell.getRow(), ell.getColumn());
-	}
 
 }
