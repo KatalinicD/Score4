@@ -1,4 +1,4 @@
-package GameElements;
+package ca.unbc.cpsc.team_breve;
 
 // this is the location class, which defines the location of a peg on a board //
 public class Location {
@@ -20,7 +20,7 @@ public class Location {
 		return row;
 	}
 	
-	// this returns the column number of a column //
+	// this returns the column number of a location //
 	public int getColumn() {
 		return column;
 	}

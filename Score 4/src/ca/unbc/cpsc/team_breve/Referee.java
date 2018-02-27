@@ -1,4 +1,4 @@
-package GameElements;
+package ca.unbc.cpsc.team_breve;
 
 public class Referee {
      private String name;

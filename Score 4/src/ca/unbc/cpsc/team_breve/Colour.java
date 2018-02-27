@@ -1,4 +1,4 @@
-package GameElements;
+package ca.unbc.cpsc.team_breve;
 
 // this class creates a colour //
 public enum Colour {
