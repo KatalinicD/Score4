@@ -5,7 +5,6 @@ public class Peg {
 	private int row;
 	private int column;
 	private Location location;
-	private int f=1;
 	
 	public Peg (int Row, int Column) {
 		row=Row;
