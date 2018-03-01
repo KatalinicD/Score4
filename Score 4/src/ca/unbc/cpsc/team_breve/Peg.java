@@ -18,7 +18,9 @@ public class Peg {
 	}
 	
 	public void addBead() {
-		
+	if (array[0]==null) {
+	 array[0]=	
+	}
 	
 	}
 }
