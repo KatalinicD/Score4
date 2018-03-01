@@ -36,6 +36,6 @@ public class Peg {
      for (int i=0; i<array.length; i++) {
     	      array[i]=null;
      }
-     System.out.println("pie");
+     System.out.println("pie and me");
 	}
 }
