@@ -36,5 +36,6 @@ public class Peg {
      for (int i=0; i<array.length; i++) {
     	      array[i]=null;
      }
+     int x=9;
 	}
 }
