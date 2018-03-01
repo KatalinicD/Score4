@@ -8,9 +8,6 @@ public class Player {
 	public Player (int identity) {
 		id=identity;
 		set=new Bead[32];
-		for (int i=0; i<32; i++) {
-			set[i]=new Bead();
-			}
 		colour=Colour.Black;
 	}
 
