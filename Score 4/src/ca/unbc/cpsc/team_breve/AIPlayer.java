@@ -5,6 +5,7 @@ public class AIPlayer {
 	
 	public AIPlayer (String identifier) {
 	id=identifier;
+	String test = "test";
 	}
 
 }
