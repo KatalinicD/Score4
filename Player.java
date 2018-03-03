@@ -2,13 +2,14 @@ package ca.unbc.cpsc.team_breve;
 
 import java.util.Scanner;
 
-public class Player implements Player{
+public class Player{
 	
-	private final int id;
-	private final Colour colour;
+	//Scanner is needed for the Player.requestMoveLocation()
 	Scanner in = new Scanner(System.in);
 	
-	//Unsure about these member variables, need input
+	//Member variables
+	int id;
+	Colour colour;
 	int opponentsId;
 	GameOverStatus gamestatus;
 	Location opponentsLastLocation;
@@ -42,21 +43,18 @@ public class Player implements Player{
 		System.out.println("Please enter a column number: ");
 		y = in.nextInt();
 		
-		Location moveLocation = new Location(x,y);
+		Location moveLocation = new Location((x - 1),(y - 1));
 		return moveLocation;
 	}
 	 
-	
 	public Location retry(){
 		System.out.println("Please enter a new location.");
 		return this.requestMoveLocation();
 	}
 	
-	
 	public void opponentPlays(Location ell){
 		//Need to work on this
 	}
-	
 	
 	public void noteGameOver(GameOverStatus gameoverstatus){
 		gamestatus = gameoverstatus;
