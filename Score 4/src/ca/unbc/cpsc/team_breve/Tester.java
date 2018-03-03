@@ -9,10 +9,11 @@ public class Tester {
 		boolean t=colour.isBlack();
 		System.out.println(t);
 		GameOverStatus gse=GameOverStatus.WIN;
-		int [][] numbers = new int [4][4];
-		for (int i=0, i<numbers.length; i++) {
-			
-		}
+		boolean p=gse.isWin();
+		System.out.println(p);
+	    Board board=new Board();
+	    System.out.println(board.getPeg(0,0).getLocation().getRow());
+	    
 		
 		
 		
