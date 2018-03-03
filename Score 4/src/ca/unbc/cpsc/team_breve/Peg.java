@@ -16,7 +16,7 @@ public class Peg {
 	}
     
 	// this returns the location of a peg //
-	public Location Location() {
+	public Location getLocation() {
 		return this.location;
 	}
 	
