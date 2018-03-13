@@ -1,14 +1,13 @@
-package ca.unbc.cpsc.team_breve;
+package ca.unbc.cpsc.team_breve.test;
 
 import java.util.Scanner;
 
 import ca.unbc.cpsc.team_breve.enums.Colour;
 import ca.unbc.cpsc.team_breve.enums.GameOverStatus;
-import ca.unbc.cpsc.score4.exceptions.PlayerException;
-
+import java.util.ArrayList;
 import java.util.Random;
 
-public class Player{
+public class Player {
 	
 	//Scanner is needed for the Player.requestMoveLocation()
 	Scanner in = new Scanner(System.in);
@@ -16,48 +15,68 @@ public class Player{
 	Random rand = new Random();
 	
 	//Member variables
-	int id;
-	Colour colour;
-	int opponentsId;
-	GameOverStatus gamestatus;
-	Location opponentsLastLocation;
+	private int id;
 	
+	//Getter method for id to use with AIPlayer
+	public int getId() {
+		return this.id;
+	}
 	
+	private Colour colour;
+	
+	//Getter method for our Colour to be used with AIPlayer
+	public Colour getColour() {
+		return this.colour;
+	}
+	
+	private int opponentsId;
+	
+	//Getter method for the opponents id to use with AIPlayer
+	public int getOpponentsId() {
+		return this.opponentsId;
+	}
+	
+	private Colour opponentsColour;
+	
+	//Getter method for the opponents Colour
+	public Colour getOpponentColour() {
+		return this.opponentsColour;
+	}
+	
+	private GameOverStatus gamestatus;
+	private Location opponentsLastLocation;
+		
 	//Player constructor
 	public Player(){
-		id = rand.nextInt(1000) + 0;
+		id = rand.nextInt(Integer.MAX_VALUE) + 0;
 		colour = null; //A player object will be assigned a color by the referee
 		gamestatus = null;
 		opponentsLastLocation = null;
+		opponentsColour = null;
+		}
+	
+	//The referee will use this method to assign our Player a Colour
+	public void startGameAs(Colour c) {
+		colour = c;
+		opponentsColour = (colour == Colour.White) ? Colour.Black: Colour.White;//Sets the opponents Colour
 	}
 	
-	public void reset() throws PlayerException{
-		try {
-		id = rand.nextInt(1000) + 0;
+	//This method resets the Player 
+	public void reset() {
+		id = rand.nextInt(Integer.MAX_VALUE) + 0;
 		colour = null;
 		opponentsId = 0;
 		gamestatus = null;
 		opponentsLastLocation = null;
-		}
-		catch (GameStateException gse)
-		{
-		throw new PlayerException("bad reset", gse) ;
-		}
 	}
-	
-	public void noteOpponentsId(int id) throws PlayerException{
-		try {
-		opponentsId = id;
-		}
-		catch (GameStateException gse)
-		{
-		throw new PlayerException("bad noteOpponentsId", gse) ;
-		}
 		
+	//This method will record the ID of the opponent. Not sure what we want to do with it yet
+	public void noteOpponentsId(int id) {
+		opponentsId = id;
 	}
 	
-	public Location requestMoveLocation() throws PlayerException{
-		try {
+	//The Referee will use this to get a Location from the PLayer. Will be different for AIplayer
+	public Location requestMoveLocation() {
 		int x;
 		int y;
 		System.out.println("Please enter a row number: ");
@@ -67,35 +86,23 @@ public class Player{
 		
 		Location moveLocation = new Location((x - 1),(y - 1));
 		return moveLocation;
-		}
-		catch (GameStateException gse)
-		{
-		throw new PlayerException("bad requestMoveLocation", gse) ;
-		}
 	}
-	 
-	public Location retry() throws PlayerException{
-		try {
+	
+	//Referee calls this method if our Location could not accept a bead
+	public Location retry() {
 		System.out.println("Please enter a new location.");
 		return this.requestMoveLocation();
-		}
-		catch (GameStateException gse)
-		{
-		throw new PlayerException("bad Location", gse) ;
-		}
 	}
 	
-	public void opponentPlays(Location ell) throws PlayerException{
-		//Need to work on this
+	//Notes the last Location that the opponent played. not sure what we want to do with this yet
+	public void opponentPlays(Location ell) {
+		opponentsLastLocation = ell;
 	}
 	
-	public void noteGameOver(GameOverStatus gameoverstatus) throws PlayerException{
-		try {
+	//Referee sends the Player a GameOverStatus when the game ends. 
+	public void noteGameOver(GameOverStatus gameoverstatus) {
 		gamestatus = gameoverstatus;
-		}
-		catch (GameStateException gse)
-		{
-		throw new PlayerException("bad noteGameOver", gse) ;
-		}
 	}
+	
+	
 }
