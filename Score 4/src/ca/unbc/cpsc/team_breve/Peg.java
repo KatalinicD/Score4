@@ -23,14 +23,16 @@ public class Peg {
 	// this adds a bead to a peg if possible //
 	public void addBead(Colour colour) {
 	if (array[0]==null) {
-	 array[0]=new Bead(colour);			 
+	 array[0]=new Bead(colour);
 	}
 	else if (array[1]==null) {
 		array[1]=new Bead(colour);
+		
 		}
 	else if (array[2]==null) {
 		array[2]=new Bead(colour);
-		}
+	    
+	}    
 	else if (array[3]==null) {
 		array[3]=new Bead(colour);
 	}
@@ -42,5 +44,10 @@ public class Peg {
      for (int i=0; i<array.length; i++) {
     	      array[i]=null;
      }
+	}
+	
+	//  this returns a bead location //
+	public Bead getBead(int loc) {
+		return array[loc];
 	}
 }

@@ -3,7 +3,6 @@ package ca.unbc.cpsc.team_breve;
 public class Tester {
 	public static void main (String[]args) {
 		Player player=new Player(10000);
-		System.out.println(f);
 		Colour colour=Colour.Black;
 		boolean t=colour.isBlack();
 		System.out.println(t);
