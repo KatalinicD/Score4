@@ -53,7 +53,7 @@ public class Board {
 		else return board[row][column].getBead(3);
 	}
 
-	// this returns the first spot that has a bead   //
+	// this returns the first spot that has a bead //
 	public Bead checkMove(int row, int column) {
 		if (board[row][column].getBead(0)!=board[row][column].getBead(1)) {
 			return board[row][column].getBead(0);
