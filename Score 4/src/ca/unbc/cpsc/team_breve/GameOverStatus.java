@@ -1,6 +1,6 @@
 package ca.unbc.cpsc.team_breve;
 
-// this stores the state of the game //
+// this stores the state of the game  //
 public enum GameOverStatus {
 	
 	WIN, LOSE, DRAW;

@@ -1,6 +1,6 @@
 package ca.unbc.cpsc.team_breve;
 
-// this is the location class, which defines the location of a peg on a board //
+// this is the location class, which defines the location of a peg on a board  //
 public class Location {
 	public static final int MAX_ROW=3;
 	public static final int MIN_ROW=0;
