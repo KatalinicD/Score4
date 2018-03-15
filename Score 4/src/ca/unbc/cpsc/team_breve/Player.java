@@ -101,6 +101,7 @@ public class Player {
 		y = in.nextInt();
 		
 		Location moveLocation = new Location((x - 1),(y - 1));
+        playerLastPlayed = moveLocation;
 		return moveLocation;
 	}
 	
