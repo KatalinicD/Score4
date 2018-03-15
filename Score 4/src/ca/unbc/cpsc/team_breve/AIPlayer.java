@@ -60,7 +60,8 @@ public class AIPlayer extends Player{
 	@Override
 	public void opponentPlays(Location ell) {
 		super.opponentPlays(ell);
-		//Add the placeCopyBead method here
+		this.placeCopyBead(this.getOpponentsId(), this.getOpponentsLastLocation());
+		this.placeCopyBead(this.getId(), this.getPlayerLastPlayed();
 	}
 	
 }
