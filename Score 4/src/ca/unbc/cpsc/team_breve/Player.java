@@ -20,6 +20,13 @@ public class Player {
 		return this.id;
 	}
 	
+	private Location playerLastPlayed;
+	
+	//Getter method for playerLastPlayed
+	public Location getPlayerLastPlayed(){
+		return this.playerLastPlayed;
+	}
+	
 	private Colour colour;
 	
 	//Getter method for our Colour to be used with AIPlayer
@@ -57,6 +64,7 @@ public class Player {
 		gamestatus = null;
 		opponentsLastLocation = null;
 		opponentsColour = null;
+		playerLastPlayed = null;
 		}
 	
 	//The referee will use this method to assign our Player a Colour
@@ -72,6 +80,7 @@ public class Player {
 		opponentsId = 0;
 		gamestatus = null;
 		opponentsLastLocation = null;
+		playerLastPlayed = null;
 	}
 		
 	//This method will record the ID of the opponent. Not sure what we want to do with it yet
