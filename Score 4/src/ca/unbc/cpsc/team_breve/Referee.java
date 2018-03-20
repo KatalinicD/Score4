@@ -2,12 +2,9 @@ package ca.unbc.cpsc.team_breve;
 
 public class Referee {
      
-	
-	
-    
 	public Referee() 
 	{
-		
+		//allows this to be called in game class	
 	}
 	
      //2 ideas, one with board, players and ref called in game class and other with just everything under ref class so far
@@ -16,7 +13,7 @@ public class Referee {
     	 
     	 human.startGameAs(White);
     	 opponent.startGameAs(Black);
-    	 
+    	 //currently preset like this until we get buttons in the GUI
      }
      
      
@@ -31,11 +28,21 @@ public class Referee {
     	 opponent.startGameAs(Black);
      }
      
-     public void checkGameState(Board gameboard)
+     public void checkGameState(Player checkWin, Board gameboard)
      {
-    	 gameboard.checkBoard;
-    	 
-    	 
-    	 
+    	 if (gameboard.checkBoard(checkWin.getColour()))
+    	 {
+    		 checkWin.noteGameOver(WIN);
+    		 //
+    	 }
+    	 else
+    	 {
+    		 /*could add in constructor for both players then check for either win
+    		 instead of only 1 player at a time*/
+    	 }
      }
+     
+     
+     
+     
 }
