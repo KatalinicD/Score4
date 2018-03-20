@@ -3,7 +3,7 @@ package ca.unbc.cpsc.team_breve;
 public class Board {
 	
 	private int length=Location.MAX_ROW+1;
-	private int width=Location.MIN_COLUMN+1;
+	private int width=Location.MAX_COLUMN+1;
 	private Peg [][] board;
 	
 	// this creates a new board
@@ -27,7 +27,8 @@ public class Board {
 	
 	// this adds a bead to a peg on the board if possible //
 	public void addBead(int row, int column, Colour colour) {
-		board[row][column].addBead(colour);
+		if (row<4 && column<4) {board[row][column].addBead(colour);}
+		else ;
 	}
 	
 	// this method removes all beads from all pegs on the board //
@@ -70,4 +71,509 @@ public class Board {
 		else return board[row][column].getBead(0);
 		
 	}
+	
+	// this method checks the board for a line of beads of a certain colour and returns true if that line is present and false if that line is not present //
+	public boolean checkBoard(Colour colour) {
+		if (board[0][0].getBead(0).getColour()==colour && board[0][1].getBead(0).getColour()==colour && board[0][2].getBead(0).getColour()==colour && board[0][3].getBead(0).getColour()==colour) 
+	    {
+	    return true;		
+	    }
+		else if (board[1][0].getBead(0).getColour()==colour && board[1][1].getBead(0).getColour()==colour && board[1][2].getBead(0).getColour()==colour && board[1][3].getBead(0).getColour()==colour) 
+	    {
+        return true;	
+        }
+		else if (board[2][0].getBead(0).getColour()==colour && board[2][1].getBead(0).getColour()==colour && board[2][2].getBead(0).getColour()==colour && board[2][3].getBead(0).getColour()==colour) 
+        {
+        return true;
+        }
+        else if (board[3][0].getBead(0).getColour()==colour && board[3][1].getBead(0).getColour()==colour && board[3][2].getBead(0).getColour()==colour && board[3][3].getBead(0).getColour()==colour) 
+        { 
+        	return true;	
+        }
+        else if (board[0][0].getBead(0).getColour()==colour && board[1][0].getBead(0).getColour()==colour && board[2][0].getBead(0).getColour()==colour && board[3][0].getBead(0).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][1].getBead(0).getColour()==colour && board[1][1].getBead(0).getColour()==colour && board[2][1].getBead(0).getColour()==colour && board[3][1].getBead(0).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][2].getBead(0).getColour()==colour && board[1][2].getBead(0).getColour()==colour && board[2][2].getBead(0).getColour()==colour && board[3][2].getBead(0).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][3].getBead(0).getColour()==colour && board[1][3].getBead(0).getColour()==colour && board[2][3].getBead(0).getColour()==colour && board[3][3].getBead(0).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][0].getBead(0).getColour()==colour && board[1][1].getBead(0).getColour()==colour && board[2][2].getBead(0).getColour()==colour && board[3][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(0).getColour()==colour && board[1][2].getBead(0).getColour()==colour && board[2][1].getBead(0).getColour()==colour && board[3][0].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(1).getColour()==colour && board[0][1].getBead(1).getColour()==colour && board[0][2].getBead(1).getColour()==colour && board[0][3].getBead(1).getColour()==colour) 
+	    {
+	    return true;		
+	    }
+		else if (board[1][0].getBead(1).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[1][3].getBead(1).getColour()==colour) 
+	    {
+        return true;	
+        }
+		else if (board[2][0].getBead(1).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[2][3].getBead(1).getColour()==colour) 
+        {
+        return true;
+        }
+        else if (board[3][0].getBead(1).getColour()==colour && board[3][1].getBead(1).getColour()==colour && board[3][2].getBead(1).getColour()==colour && board[3][3].getBead(1).getColour()==colour) 
+        { 
+        	return true;	
+        }
+        else if (board[0][0].getBead(1).getColour()==colour && board[1][0].getBead(1).getColour()==colour && board[2][0].getBead(1).getColour()==colour && board[3][0].getBead(1).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][1].getBead(1).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[3][1].getBead(1).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][2].getBead(1).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[3][2].getBead(1).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][3].getBead(1).getColour()==colour && board[1][3].getBead(1).getColour()==colour && board[2][3].getBead(1).getColour()==colour && board[3][3].getBead(1).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][0].getBead(1).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[3][3].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(1).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[3][0].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(2).getColour()==colour && board[0][1].getBead(2).getColour()==colour && board[0][2].getBead(2).getColour()==colour && board[0][3].getBead(2).getColour()==colour) 
+	    {
+	    return true;		
+	    }
+		else if (board[1][0].getBead(2).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[1][3].getBead(2).getColour()==colour) 
+	    {
+        return true;	
+        }
+		else if (board[2][0].getBead(2).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[2][3].getBead(2).getColour()==colour) 
+        {
+        return true;
+        }
+        else if (board[3][0].getBead(2).getColour()==colour && board[3][1].getBead(2).getColour()==colour && board[3][2].getBead(2).getColour()==colour && board[3][3].getBead(2).getColour()==colour) 
+        { 
+        	return true;	
+        }
+        else if (board[0][0].getBead(2).getColour()==colour && board[1][0].getBead(2).getColour()==colour && board[2][0].getBead(2).getColour()==colour && board[3][0].getBead(2).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][1].getBead(2).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[3][1].getBead(2).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][2].getBead(2).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[3][2].getBead(2).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][3].getBead(2).getColour()==colour && board[1][3].getBead(2).getColour()==colour && board[2][3].getBead(2).getColour()==colour && board[3][3].getBead(2).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][0].getBead(2).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[3][3].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(2).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[3][0].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(3).getColour()==colour && board[0][1].getBead(3).getColour()==colour && board[0][2].getBead(3).getColour()==colour && board[0][3].getBead(3).getColour()==colour) 
+	    {
+	    return true;		
+	    }
+		else if (board[1][0].getBead(3).getColour()==colour && board[1][1].getBead(3).getColour()==colour && board[1][2].getBead(3).getColour()==colour && board[1][3].getBead(3).getColour()==colour) 
+	    {
+        return true;	
+        }
+		else if (board[2][0].getBead(3).getColour()==colour && board[2][1].getBead(3).getColour()==colour && board[2][2].getBead(3).getColour()==colour && board[2][3].getBead(3).getColour()==colour) 
+        {
+        return true;
+        }
+        else if (board[3][0].getBead(3).getColour()==colour && board[3][1].getBead(3).getColour()==colour && board[3][2].getBead(3).getColour()==colour && board[3][3].getBead(3).getColour()==colour) 
+        { 
+        	return true;	
+        }
+        else if (board[0][0].getBead(3).getColour()==colour && board[1][0].getBead(3).getColour()==colour && board[2][0].getBead(3).getColour()==colour && board[3][0].getBead(3).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][1].getBead(3).getColour()==colour && board[1][1].getBead(3).getColour()==colour && board[2][1].getBead(3).getColour()==colour && board[3][1].getBead(3).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][2].getBead(3).getColour()==colour && board[1][2].getBead(3).getColour()==colour && board[2][2].getBead(3).getColour()==colour && board[3][2].getBead(3).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][3].getBead(3).getColour()==colour && board[1][3].getBead(3).getColour()==colour && board[2][3].getBead(3).getColour()==colour && board[3][3].getBead(3).getColour()==colour) 
+        {
+        return true;	
+        }
+        else if (board[0][0].getBead(3).getColour()==colour && board[1][1].getBead(3).getColour()==colour && board[2][2].getBead(3).getColour()==colour && board[3][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(3).getColour()==colour && board[1][2].getBead(3).getColour()==colour && board[2][1].getBead(3).getColour()==colour && board[3][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(0).getColour()==colour && board[1][0].getBead(0).getColour()==colour && board[2][0].getBead(0).getColour()==colour && board[3][0].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(1).getColour()==colour && board[1][0].getBead(1).getColour()==colour && board[2][0].getBead(1).getColour()==colour && board[3][0].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(2).getColour()==colour && board[1][0].getBead(2).getColour()==colour && board[2][0].getBead(2).getColour()==colour && board[3][0].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(3).getColour()==colour && board[1][0].getBead(3).getColour()==colour && board[2][0].getBead(3).getColour()==colour && board[3][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(0).getColour()==colour && board[0][0].getBead(1).getColour()==colour && board[0][0].getBead(2).getColour()==colour && board[0][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][0].getBead(0).getColour()==colour && board[1][0].getBead(1).getColour()==colour && board[1][0].getBead(2).getColour()==colour && board[1][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][0].getBead(0).getColour()==colour && board[2][0].getBead(1).getColour()==colour && board[2][0].getBead(2).getColour()==colour && board[2][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(0).getColour()==colour && board[3][0].getBead(1).getColour()==colour && board[3][0].getBead(2).getColour()==colour && board[3][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(0).getColour()==colour && board[1][0].getBead(1).getColour()==colour && board[2][0].getBead(2).getColour()==colour && board[3][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(3).getColour()==colour && board[1][0].getBead(2).getColour()==colour && board[2][0].getBead(1).getColour()==colour && board[3][0].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][1].getBead(0).getColour()==colour && board[1][1].getBead(0).getColour()==colour && board[2][1].getBead(0).getColour()==colour && board[3][1].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][1].getBead(1).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[3][1].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][1].getBead(2).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[3][1].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][1].getBead(3).getColour()==colour && board[1][1].getBead(3).getColour()==colour && board[2][1].getBead(3).getColour()==colour && board[3][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][1].getBead(0).getColour()==colour && board[0][1].getBead(1).getColour()==colour && board[0][1].getBead(2).getColour()==colour && board[0][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][1].getBead(0).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[1][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][1].getBead(0).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[2][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][1].getBead(0).getColour()==colour && board[3][1].getBead(1).getColour()==colour && board[3][1].getBead(2).getColour()==colour && board[3][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][1].getBead(0).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[3][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][1].getBead(3).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[3][1].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][2].getBead(0).getColour()==colour && board[1][2].getBead(0).getColour()==colour && board[2][2].getBead(0).getColour()==colour && board[3][2].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][2].getBead(1).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[3][2].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][2].getBead(2).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[3][2].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][2].getBead(3).getColour()==colour && board[1][2].getBead(3).getColour()==colour && board[2][2].getBead(3).getColour()==colour && board[3][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][2].getBead(0).getColour()==colour && board[0][2].getBead(1).getColour()==colour && board[0][2].getBead(2).getColour()==colour && board[0][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][2].getBead(0).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[1][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][2].getBead(0).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[2][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][2].getBead(0).getColour()==colour && board[3][2].getBead(1).getColour()==colour && board[3][2].getBead(2).getColour()==colour && board[3][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][2].getBead(0).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[3][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][2].getBead(3).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[3][2].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(0).getColour()==colour && board[1][3].getBead(0).getColour()==colour && board[2][3].getBead(0).getColour()==colour && board[3][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(1).getColour()==colour && board[1][3].getBead(1).getColour()==colour && board[2][3].getBead(1).getColour()==colour && board[3][3].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(2).getColour()==colour && board[1][3].getBead(2).getColour()==colour && board[2][3].getBead(2).getColour()==colour && board[3][3].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(3).getColour()==colour && board[1][3].getBead(3).getColour()==colour && board[2][3].getBead(3).getColour()==colour && board[3][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(0).getColour()==colour && board[0][3].getBead(1).getColour()==colour && board[0][3].getBead(2).getColour()==colour && board[0][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][3].getBead(0).getColour()==colour && board[1][3].getBead(1).getColour()==colour && board[1][3].getBead(2).getColour()==colour && board[1][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][3].getBead(0).getColour()==colour && board[2][3].getBead(1).getColour()==colour && board[2][3].getBead(2).getColour()==colour && board[2][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][3].getBead(0).getColour()==colour && board[3][3].getBead(1).getColour()==colour && board[3][3].getBead(2).getColour()==colour && board[3][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(0).getColour()==colour && board[1][3].getBead(1).getColour()==colour && board[2][3].getBead(2).getColour()==colour && board[3][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(3).getColour()==colour && board[1][3].getBead(2).getColour()==colour && board[2][3].getBead(1).getColour()==colour && board[3][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(0).getColour()==colour && board[0][1].getBead(0).getColour()==colour && board[0][2].getBead(0).getColour()==colour && board[0][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(1).getColour()==colour && board[0][1].getBead(1).getColour()==colour && board[0][2].getBead(1).getColour()==colour && board[0][3].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(2).getColour()==colour && board[0][1].getBead(2).getColour()==colour && board[0][2].getBead(2).getColour()==colour && board[0][3].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(3).getColour()==colour && board[0][1].getBead(3).getColour()==colour && board[0][2].getBead(3).getColour()==colour && board[0][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(0).getColour()==colour && board[0][0].getBead(1).getColour()==colour && board[0][0].getBead(2).getColour()==colour && board[0][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][1].getBead(0).getColour()==colour && board[0][1].getBead(1).getColour()==colour && board[0][1].getBead(2).getColour()==colour && board[0][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][2].getBead(0).getColour()==colour && board[0][2].getBead(1).getColour()==colour && board[0][2].getBead(2).getColour()==colour && board[0][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][3].getBead(0).getColour()==colour && board[0][3].getBead(1).getColour()==colour && board[0][3].getBead(2).getColour()==colour && board[0][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(0).getColour()==colour && board[0][1].getBead(1).getColour()==colour && board[0][2].getBead(2).getColour()==colour && board[0][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(3).getColour()==colour && board[0][1].getBead(2).getColour()==colour && board[0][2].getBead(1).getColour()==colour && board[0][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][0].getBead(0).getColour()==colour && board[1][1].getBead(0).getColour()==colour && board[1][2].getBead(0).getColour()==colour && board[1][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][0].getBead(1).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[1][3].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][0].getBead(2).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[1][3].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][0].getBead(3).getColour()==colour && board[1][1].getBead(3).getColour()==colour && board[1][2].getBead(3).getColour()==colour && board[1][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][0].getBead(0).getColour()==colour && board[1][0].getBead(1).getColour()==colour && board[1][0].getBead(2).getColour()==colour && board[1][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][1].getBead(0).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[1][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][2].getBead(0).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[1][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][3].getBead(0).getColour()==colour && board[1][3].getBead(1).getColour()==colour && board[1][3].getBead(2).getColour()==colour && board[1][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][0].getBead(0).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[1][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[1][0].getBead(3).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[1][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][0].getBead(0).getColour()==colour && board[2][1].getBead(0).getColour()==colour && board[2][2].getBead(0).getColour()==colour && board[2][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][0].getBead(1).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[2][3].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][0].getBead(2).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[2][3].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][0].getBead(3).getColour()==colour && board[2][1].getBead(3).getColour()==colour && board[2][2].getBead(3).getColour()==colour && board[2][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][0].getBead(0).getColour()==colour && board[2][0].getBead(1).getColour()==colour && board[2][0].getBead(2).getColour()==colour && board[2][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][1].getBead(0).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[2][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][2].getBead(0).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[2][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][3].getBead(0).getColour()==colour && board[2][3].getBead(1).getColour()==colour && board[2][3].getBead(2).getColour()==colour && board[2][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][0].getBead(0).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[2][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[2][0].getBead(3).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[2][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(0).getColour()==colour && board[3][1].getBead(0).getColour()==colour && board[3][2].getBead(0).getColour()==colour && board[3][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(1).getColour()==colour && board[3][1].getBead(1).getColour()==colour && board[3][2].getBead(1).getColour()==colour && board[3][3].getBead(1).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(2).getColour()==colour && board[3][1].getBead(2).getColour()==colour && board[3][2].getBead(2).getColour()==colour && board[3][3].getBead(2).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(3).getColour()==colour && board[3][1].getBead(3).getColour()==colour && board[3][2].getBead(3).getColour()==colour && board[3][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(0).getColour()==colour && board[3][0].getBead(1).getColour()==colour && board[3][0].getBead(2).getColour()==colour && board[3][0].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][1].getBead(0).getColour()==colour && board[3][1].getBead(1).getColour()==colour && board[3][1].getBead(2).getColour()==colour && board[3][1].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][2].getBead(0).getColour()==colour && board[3][2].getBead(1).getColour()==colour && board[3][2].getBead(2).getColour()==colour && board[3][2].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][3].getBead(0).getColour()==colour && board[3][3].getBead(1).getColour()==colour && board[3][3].getBead(2).getColour()==colour && board[3][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(0).getColour()==colour && board[3][1].getBead(1).getColour()==colour && board[3][2].getBead(2).getColour()==colour && board[3][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(3).getColour()==colour && board[3][1].getBead(2).getColour()==colour && board[3][2].getBead(1).getColour()==colour && board[3][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(0).getColour()==colour && board[1][1].getBead(1).getColour()==colour && board[2][2].getBead(2).getColour()==colour && board[3][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[0][0].getBead(3).getColour()==colour && board[1][1].getBead(2).getColour()==colour && board[2][2].getBead(1).getColour()==colour && board[3][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(0).getColour()==colour && board[2][1].getBead(1).getColour()==colour && board[1][2].getBead(2).getColour()==colour && board[0][3].getBead(3).getColour()==colour)
+        {
+        	return true;
+        }
+        else if (board[3][0].getBead(3).getColour()==colour && board[2][1].getBead(2).getColour()==colour && board[1][2].getBead(1).getColour()==colour && board[0][3].getBead(0).getColour()==colour)
+        {
+        	return true;
+        }
+        else 
+        {
+        	return false;
+        	}
+	}
 }
+ 

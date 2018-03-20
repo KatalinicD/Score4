@@ -11,4 +11,5 @@ public class Bead {
 	public Colour getColour() {
 		return this.beadcolour;
 	}
+	
 }

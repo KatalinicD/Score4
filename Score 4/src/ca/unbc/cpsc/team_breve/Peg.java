@@ -48,6 +48,10 @@ public class Peg {
 	
 	//  this returns a bead location //
 	public Bead getBead(int loc) {
-		return array[loc];
+		if (array[loc]==null) {
+			return new Bead(Colour.Null);
+		}
+		else {return array[loc];}
 	}
+	
 }
