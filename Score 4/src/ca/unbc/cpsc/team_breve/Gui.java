@@ -50,7 +50,7 @@ public class Gui extends JFrame{
     
     //Input board 
     
-    Gui(Board b){
+    Gui(Board b, Referee r){
     	
     	board = b;
     	
