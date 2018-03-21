@@ -27,12 +27,28 @@ public class Player {
 		return this.playerLastPlayed;
 	}
 	
+	//Setter method for playerLastPLayed
+	public void setPlayerLastPlayed(Location loc)
+	{
+		this.playerLastPlayed = loc;
+	}
+	
+	private boolean pegClicked;
+	
+	//Setter method for pegClicked
+	public void setPegClicked(boolean clicked)
+	{
+		pegClicked = clicked;
+	}
+	
 	private Colour colour;
 	
 	//Getter method for our Colour to be used with AIPlayer
 	public Colour getColour() {
 		return this.colour;
 	}
+	
+	
 	
 	private int opponentsId;
 	
@@ -92,21 +108,21 @@ public class Player {
 	}
 	
 	//The Referee will use this to get a Location from the PLayer. Will be different for AIplayer
-	public Location requestMoveLocation() {
-		int x;
-		int y;
-		System.out.println("Please enter a row number: ");
-		x = in.nextInt();
-		System.out.println("Please enter a column number: ");
-		y = in.nextInt();
-		
-		Location moveLocation = new Location((x - 1),(y - 1));
-        playerLastPlayed = moveLocation;
-		return moveLocation;
+	public Location requestMoveLocation() throws InterruptedException {
+		while(true)
+		{
+			Thread.sleep(10);
+			if(pegClicked)
+			{
+				pegClicked = false;
+				break;
+			}
+		}
+		return playerLastPlayed;
 	}
 	
 	//Referee calls this method if our Location could not accept a bead
-	public Location retry() {
+	public Location retry() throws InterruptedException {
 		System.out.println("Please enter a new location.");
 		return this.requestMoveLocation();
 	}
