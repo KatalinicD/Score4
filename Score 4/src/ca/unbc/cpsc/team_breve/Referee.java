@@ -2,47 +2,66 @@ package ca.unbc.cpsc.team_breve;
 
 public class Referee {
      
-	public Referee() 
+	Board gameboard;
+	Player human;
+	AIPlayer opponent;
+	Gui gui;
+	Location savedLocation = null;
+	
+	public Referee(Board board, Player player, AIPlayer ai, Gui guiMethods) 
 	{
-		//allows this to be called in game class	
+			gameboard = board;
+			human = player;
+			opponent = ai;
+			gui = guiMethods;
 	}
 	
      //2 ideas, one with board, players and ref called in game class and other with just everything under ref class so far
      
-     public void start(Player human, AIPlayer opponent) {
+     public void start() {
     	 
     	 human.startGameAs(White);
     	 opponent.startGameAs(Black);
     	 //currently preset like this until we get buttons in the GUI
+    	 
      }
      
      
-     
-     public void reset(Player human, AIPlayer opponent, Board gameboard)
+     public void reset()
      {
     	 gameboard.clearBoard();
     	 human.reset();
     	 opponent.reset();
     	 
+    	 savedLocation = null;
+    	 
     	 human.startGameAs(White);
     	 opponent.startGameAs(Black);
      }
      
-     public void checkGameState(Player checkWin, Board gameboard)
+     public void checkGameState()
      {
-    	 if (gameboard.checkBoard(checkWin.getColour()))
+    	 if (gameboard.checkBoard(human.getColour()))
     	 {
-    		 checkWin.noteGameOver(WIN);
+    		 human.noteGameOver(WIN);
+    		 opponent.noteGameOver(LOSE);
     		 //
     	 }
-    	 else
+    	 else if (gameboard.checkBoard(opponent.getColour()))
     	 {
-    		 /*could add in constructor for both players then check for either win
-    		 instead of only 1 player at a time*/
+    		 human.noteGameOver(LOSE);
+    		 opponent.noteGameOver(WIN);
     	 }
      }
      
+     public void saveLocation (Location loc)
+     {
+    	 savedLocation = loc;
+     }
      
-     
-     
+     public void setPlayedLocation()
+     {
+    	 human.setPlayerLastPlayed(savedLocation);
+    	 human.setPegClicked(True);
+     }
 }
