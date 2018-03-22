@@ -58,27 +58,27 @@ public class Game {
 			
 			if (ref.checkGameState() = WIN)
 			{
-				JFrame frame = new JFrame();
-				frame.setSize(200,100);
-				frame.setTitle("You Win!");
-				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				JFrame frame1 = new JFrame();
+				frame1.setSize(200,100);
+				frame1.setTitle("You Win!");
+				frame1.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				
 				WinComponent winComponent = new WinComponent();
-				frame.add(winComponent);
+				frame1.add(winComponent);
 				
-				frame.setVisible(true);
+				frame1.setVisible(true);
 			}
 			else if (ref.checkGameState() = LOSE)
 			{
-				JFrame frame = new JFrame();
-				frame.setSize(200,100);
-				frame.setTitle("You Lose!");
-				frame.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
+				JFrame frame2 = new JFrame();
+				frame2.setSize(200,100);
+				frame2.setTitle("You Lose!");
+				frame2.setDefaultCloseOperation(DISPOSE_ON_CLOSE);
 				
 				LoseComponent loseComponent = new LoseComponent();
-				frame.add(loseComponent);
+				frame2.add(loseComponent);
 				
-				frame.setVisible(true);
+				frame2.setVisible(true);
 			}
 			
 			ref.reset();
