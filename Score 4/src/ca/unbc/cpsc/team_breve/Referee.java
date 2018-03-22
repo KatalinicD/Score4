@@ -8,7 +8,7 @@ public class Referee {
 	Gui gui;
 	Location savedLocation = null;
 	
-	public Referee(Board board, Player player, AIPlayer ai, Gui guiMethods) 
+	public Referee(Board board, Player player, Player ai, Gui guiMethods) 
 	{
 			gameboard = board;
 			human = player;
@@ -39,18 +39,20 @@ public class Referee {
     	 opponent.startGameAs(Black);
      }
      
-     public void checkGameState()
+     public void gameState checkGameState()
      {
     	 if (gameboard.checkBoard(human.getColour()))
     	 {
     		 human.noteGameOver(WIN);
     		 opponent.noteGameOver(LOSE);
+    		 return WIN;
     		 //
     	 }
     	 else if (gameboard.checkBoard(opponent.getColour()))
     	 {
     		 human.noteGameOver(LOSE);
     		 opponent.noteGameOver(WIN);
+    		 return LOSE;
     	 }
      }
      
@@ -61,6 +63,7 @@ public class Referee {
      
      public void setPlayedLocation()
      {
+    	 gameboard.getPeg(savedLocation).addBead(human.getColour());
     	 human.setPlayerLastPlayed(savedLocation);
     	 human.setPegClicked(True);
      }
