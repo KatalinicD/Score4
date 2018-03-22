@@ -61,9 +61,19 @@ public class Referee {
     	 savedLocation = loc;
      }
      
-     public void setPlayedLocation()
+     public void location getSavedLocation()
      {
-    	 gameboard.getPeg(savedLocation).addBead(human.getColour());
+    	 return savedLocation;
+     }
+     
+     public void setPlayedLocation(Player players)
+     {
+    	 gameboard.getPeg(savedLocation).addBead(players.getColour());
+    	 
+     }
+     
+     public void setPlayerLastPlayed()
+     {
     	 human.setPlayerLastPlayed(savedLocation);
     	 human.setPegClicked(True);
      }
