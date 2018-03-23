@@ -9,6 +9,9 @@ import java.util.ArrayList;
 
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 
 @SuppressWarnings("serial")
 public class Gui extends JFrame{
@@ -68,11 +71,37 @@ public class Gui extends JFrame{
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
+        
         MousePressListener mousePressed = new MousePressListener();
         addMouseListener(mousePressed);
         //System.out.print("end of gui cnstr");
         
     }//constructor Gui
+    
+    /**
+    
+    //************************this is my manu bar test***************************************
+    
+    public void addMenuBarToPane() {
+    	
+    	JMenuBar menuBar = new JMenuBar();
+    	JMenu helpMenu = new JMenu("Help");
+    	JMenuItem viewHelpMenuItem = new JMenuItem("View Help");
+    	viewHelpMenuItem.addActionListener((ActionListener) this);
+    	viewHelpMenuItem.setActionCommand("help_viewHelp");
+    	JMenuItem aboutMenuItem = new JMenuItem("About Score4");
+    	helpMenu.add(viewHelpMenuItem);
+    	helpMenu.add(aboutMenuItem);
+    	
+    	menuBar.add(helpMenu);
+    	this.setJMenuBar(menuBar);
+    	
+    }
+    
+    
+    //********************************menu bar test****************************************
+    
+    **/
     
     //painting :)
     
@@ -205,7 +234,7 @@ public class Gui extends JFrame{
                         	//board.board[i][j].array[0] = new Bead(Colour.White);
                 
                         	
-                        	//board.addBead(player.requestMoveLocation(), player.getColour());
+                        	//board.addBead(player.requestMoveLocation(), player.getColouboadr());
                         	//System.out.println(myR);
                         	//loc = new Location(i,j);
                         	//Bead bb = new Bead(Colour.White);
@@ -214,7 +243,14 @@ public class Gui extends JFrame{
                         	//System.out.println(bb);
                         	//board.checkPeg(i, j);
                         	
+                        	//********************************************************************
                         	
+                        	
+                        	
+                        	board.addBead(i,j, Colour.Black);
+                        	
+                        	
+                        	/**
                         	if(board.checkPeg(i, j)!=null) {
                         		
                         		//Bead bb = new Bead(Colour.Black);
@@ -224,16 +260,12 @@ public class Gui extends JFrame{
                         		
                         		//board.addBead(i, j, Colour.White);
                         		board.board[i][j].array[0] = new Bead(Colour.Black);
+                        		System.out.println(myR.getSavedLocation());
+                        		                      		
+                        		
+                        		myR.saveLocation(loc);
                         	}
-                        	myR.saveLocation(loc);
-                        	
-                        	
-                        	
-                        	
-                        
-                        	
-                        	
-                        	
+                        	               
                         	
                         	//Peg peg = new Peg(i,j);
                         
@@ -242,7 +274,7 @@ public class Gui extends JFrame{
                         	//System.out.println(myR + "---------------------------");
                         	
     
-                        	
+                        	**/
                             /*
                                important
                                ADD THE METHOD OF ADDBEAD HERE
@@ -253,6 +285,8 @@ public class Gui extends JFrame{
                         	
                             System.out.println(i+" "+j);
                             return true;
+                            
+                            
                         }
                     }
                     X=X+Xspace;
@@ -263,7 +297,7 @@ public class Gui extends JFrame{
             return false;
         }
         
-    }    
+    }  
         
        //public static void main(String[] lulu){
     	
