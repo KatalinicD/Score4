@@ -12,9 +12,7 @@ import javax.swing.JFrame;
 
 @SuppressWarnings("serial")
 public class Gui extends JFrame{
-	
-	
-    
+	 
 	int LBpointX=50;
     int LBpointY=450;
     double slope=0.5;
@@ -27,8 +25,6 @@ public class Gui extends JFrame{
     int pegHeight=200;
     int X=LBpointX+Xspace+rowDifference*3;
     int Y=LBpointY-Yspace*4;
-    
-    
     
     private Referee myR;
     private Board board;
@@ -63,8 +59,6 @@ public class Gui extends JFrame{
     	myR = r;
     	
     	board = b;
-    	
-    	
     	
     	//******i should not need this
     	//myR = new Referee(board, player, player, gui);
@@ -136,7 +130,7 @@ public class Gui extends JFrame{
                             g.setColor(Color.GRAY);
 
                         }else if(board.board[i][j].array[ii].beadcolour!=Colour.White){
-                            g.setColor(Color.white);
+                            g.setColor(Color.WHITE);
                             g.fillOval(centerX-r,centerY-r,r*2,r*2);
                             g.setColor(Color.GRAY);
                         	
@@ -177,7 +171,7 @@ public class Gui extends JFrame{
         public void mouseExited(MouseEvent event) {}
         
         
-        Location loc;
+        //Location loc;
         
         public boolean within(int pointX,int pointY){
         	System.out.println(pointX+"   "+pointY);
@@ -200,8 +194,6 @@ public class Gui extends JFrame{
                         	//Bead ai_bead = new Bead(Colour.Black);
                         	
                         	
-                        	
-                        	
                         	//loc = new Location(i,j);
                         	//myR.saveLocation(loc);
                         	
@@ -210,31 +202,46 @@ public class Gui extends JFrame{
                         	//Bead beadPosition = board.checkPeg(i, j);
                         	
                         	//Peg peg = new Peg(i,j);
-                        	//board.board[i][j].array[peg.array.length] = new Bead(Colour.White);
+                        	//board.board[i][j].array[0] = new Bead(Colour.White);
                 
                         	
                         	//board.addBead(player.requestMoveLocation(), player.getColour());
                         	//System.out.println(myR);
-                        	loc = new Location(i,j);
+                        	//loc = new Location(i,j);
+                        	//Bead bb = new Bead(Colour.White);
+                        	//bb = board.checkPeg(i, j);
                         	
-                        	board.checkPeg(i, j);
-                        	if(board.checkPeg(i, j)==null) {
+                        	//System.out.println(bb);
+                        	//board.checkPeg(i, j);
+                        	
+                        	
+                        	if(board.checkPeg(i, j)!=null) {
                         		
-                        		board.board[i][j].array[0] = new Bead(Colour.White);
+                        		//Bead bb = new Bead(Colour.Black);
+                        		//bb = board.checkPeg(i, j);
+                        		
+                        		//System.out.println(bb.toString());
+                        		
+                        		//board.addBead(i, j, Colour.White);
+                        		board.board[i][j].array[0] = new Bead(Colour.Black);
                         	}
-                        	
-                        	
-                        	
-                        	//Peg peg = new Peg(i,j);
-                        
-                        	//board.board[i][j].array[peg.getBead(loc)]= new Bead;
-                        	//board.board[i][j].array[1]= new Bead(Colour.White);
-                        	//System.out.println(myR + "---------------------------");
                         	myR.saveLocation(loc);
                         	
                         	
                         	
                         	
+                        
+                        	
+                        	
+                        	
+                        	
+                        	//Peg peg = new Peg(i,j);
+                        
+                        	//board.board[i][j].array[2]= new Bead(Colour.Black);
+                        	//board.board[i][j].array[1]= new Bead(Colour.Black);
+                        	//System.out.println(myR + "---------------------------");
+                        	
+    
                         	
                             /*
                                important
@@ -242,13 +249,7 @@ public class Gui extends JFrame{
                                CHANGE THE COLOR YOU NEED HERE
 
                              */
-                        	
-                        	
-                        	
-                        	
-                        	
-                        	
-                        	
+                 
                         	
                             System.out.println(i+" "+j);
                             return true;
@@ -261,13 +262,10 @@ public class Gui extends JFrame{
             }
             return false;
         }
-    }
-
-	
-
-	
-    
-    //public static void main(String[] lulu){
+        
+    }    
+        
+       //public static void main(String[] lulu){
     	
         //gui = new Gui();
     //}// method main
