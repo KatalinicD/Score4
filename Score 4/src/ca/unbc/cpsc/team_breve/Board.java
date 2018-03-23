@@ -42,13 +42,13 @@ public class Board {
 	
 	// this returns the first empty bead //
 	public Bead checkPeg (int row, int column) {
-		if (board[row][column].getBead(0)==null) {
+		if (board[row][column].getBead(0).getColour()==Colour.Null) {
 			return board[row][column].getBead(0);
 		}
-		else if (board[row][column].getBead(1)==null) {
+		else if (board[row][column].getBead(1).getColour()==Colour.Null) {
 			return board[row][column].getBead(1);
 		}
-		else if (board[row][column].getBead(2)==null) {
+		else if (board[row][column].getBead(2).getColour()==Colour.Null) {
 			return board[row][column].getBead(2);
 		}
 		else return board[row][column].getBead(3);
@@ -56,20 +56,45 @@ public class Board {
 
 	// this returns the first spot that has a bead //
 	public Bead checkMove(int row, int column) {
-		if (board[row][column].getBead(0)!=board[row][column].getBead(1)) {
+		if (board[row][column].getBead(0).getColour()!=Colour.Null && board[row][column].getBead(1).getColour()==Colour.Null) {
 			return board[row][column].getBead(0);
 		}
-		else if (board[row][column].getBead(1)!=board[row][column].getBead(2)) {
+		else if (board[row][column].getBead(1).getColour()!=Colour.Null && board[row][column].getBead(2).getColour()==Colour.Null) {
 			return board[row][column].getBead(1);
 		}
-		else if (board[row][column].getBead(2)!=board[row][column].getBead(3)) {
+		else if (board[row][column].getBead(2).getColour()!=Colour.Null && board[row][column].getBead(3).getColour()==Colour.Null) {
 			return board[row][column].getBead(2);
 		}
-		else if (board[row][column].getBead(2)!=null && board[row][column].getBead(3)!=null) {
+		else if (board[row][column].getBead(2).getColour()!=Colour.Null && board[row][column].getBead(3).getColour()!=Colour.Null) {
 			return board[row][column].getBead(3);
 		}
 		else return board[row][column].getBead(0);
 		
+	}
+	
+	// this method returns how many beads are on a peg //
+	public int returnHeight(int row, int column) {
+		int x;
+		if (board[row][column].getBead(0).getColour()!=Colour.Null && board[row][column].getBead(1).getColour()==Colour.Null) {
+			x=1;
+			return x;
+		}
+		else if (board[row][column].getBead(1).getColour()!=Colour.Null && board[row][column].getBead(2).getColour()==Colour.Null) {
+			x=2;
+			return x;
+		}
+		else if (board[row][column].getBead(2).getColour()!=Colour.Null && board[row][column].getBead(3).getColour()==Colour.Null) {
+			x=3;
+			return x;
+		}
+		else if (board[row][column].getBead(2).getColour()!=Colour.Null && board[row][column].getBead(3).getColour()!=Colour.Null) {
+			x=4;
+			return x;
+		}
+		else {
+			x=0;
+			return x;	
+	}
 	}
 	
 	// this method checks the board for a line of beads of a certain colour and returns true if that line is present and false if that line is not present //
