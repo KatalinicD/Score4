@@ -21,6 +21,7 @@ public class AIPlayer extends Player{
 	public void reset() {
 		super.reset();//Calls reset() from the superclass, Player
 		boardCopy.clearBoard();
+		retried = false;
 	}
 	
 	//We need to override the requestMoveLocation from Player. AIplayer has to choose independent of input
@@ -61,7 +62,7 @@ public class AIPlayer extends Player{
 	public void opponentPlays(Location ell) {
 		super.opponentPlays(ell);
 		this.placeCopyBead(this.getOpponentsId(), this.getOpponentsLastLocation());
-		this.placeCopyBead(this.getId(), this.getPlayerLastPlayed();
+		this.placeCopyBead(this.getId(), this.getPlayerLastPlayed());
 	}
 	
 }
