@@ -1,35 +1,53 @@
-package ca.unbc.cpsc.team_breve.test;
+package ca.unbc.cpsc.team_breve;
 
 import java.util.Random;
-import java.util.ArrayList;
+import ca.unbc.cpsc.score4.exceptions.PlayerException;
 
 public class AIPlayer extends Player{
 	
 	//Random object to set our ID
 	Random rand = new Random();
 	
+	//This boolean will record the Referee called retry() 
+	private boolean retried = false;//Starts out false because retry() hasn't been called
+	
 	//This will be the AIplayers copy of the board
 	Board boardCopy;
 	
 	//Constructor
-	public AIPlayer () { boardCopy = new Board();}//this.resetBoardCopy();//Clears the AIPlayer's board
+	public AIPlayer () { boardCopy = new Board();}//Create a copy board
 		
 	//We need to override the reset command to include resetBoardCopy()
 	@Override
 	public void reset() {
 		super.reset();//Calls reset() from the superclass, Player
-		boardCopy = new Board();
+		boardCopy.clearBoard();
+		retried = false;
 	}
 	
 	//We need to override the requestMoveLocation from Player. AIplayer has to choose independent of input
-	//@override
-	//public Location requestMoveLocation() {
-
-	//}
+	@Override
+	public Location requestMoveLocation() {
+		int row;
+		int column;
+		if(retried) {//If retry() was called, do this
+			row = rand.nextInt(3) + 0;
+			column = rand.nextInt(3) + 0;
+			Location location = new Location(row, column);
+			retried = false;
+			return location;
+		}
+		else {//If retry() was not called, do this
+			return this.getOpponentsLastLocation();
+		}
+	}
 	
 	//The override removes the System.out.println statement present in Player
 	@Override
-	public Location retry() { return this.requestMoveLocation();}
+	public Location retry() { 
+		retried = true;//Note that the retry() method was called
+		return this.requestMoveLocation();
+	}
 	
 	//This method places a bead onto the AIPlayer's copy of the board
 	public void placeCopyBead(int ident, Location loc) {
@@ -37,15 +55,15 @@ public class AIPlayer extends Player{
 		int column;
 		row = loc.getRow();
 		column = loc.getColumn();
-		if(super.getId() == ident) {
-			
-		}
+		if(this.getId() == ident) {boardCopy.addBead(row,column,this.getColour());}//Place Players bead
+		else {boardCopy.addBead(row, column, this.getOpponentColour());}//Place Opponents bead		
 	}
 	//The override adds a placeCopyBead() method 
 	@Override
 	public void opponentPlays(Location ell) {
 		super.opponentPlays(ell);
-		//Add the placeCopyBead method here
+		this.placeCopyBead(this.getOpponentsId(), this.getOpponentsLastLocation());
+		this.placeCopyBead(this.getId(), this.getPlayerLastPlayed());
 	}
 	
 }

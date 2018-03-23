@@ -1,13 +1,12 @@
-package ca.unbc.cpsc.team_breve.test;
+package ca.unbc.cpsc.team_breve;
 
 import java.util.Scanner;
+import ca.unbc.cpsc.score4.exceptions.PlayerException;
 
-import ca.unbc.cpsc.team_breve.enums.Colour;
-import ca.unbc.cpsc.team_breve.enums.GameOverStatus;
-import java.util.ArrayList;
+import ca.unbc.cpsc.team_breve.enums.*;
 import java.util.Random;
 
-public class Player {
+public class Player implements ca.unbc.cpsc.score4.interfaces.Player{
 	
 	//Scanner is needed for the Player.requestMoveLocation()
 	Scanner in = new Scanner(System.in);
@@ -20,6 +19,27 @@ public class Player {
 	//Getter method for id to use with AIPlayer
 	public int getId() {
 		return this.id;
+	}
+	
+	private Location playerLastPlayed;
+	
+	//Getter method for playerLastPlayed
+	public Location getPlayerLastPlayed(){
+		return this.playerLastPlayed;
+	}
+	
+	//Setter method for playerLastPLayed
+	public void setPlayerLastPlayed(Location loc)
+	{
+		this.playerLastPlayed = loc;
+	}
+	
+	private boolean pegClicked;
+	
+	//Setter method for pegClicked
+	public void setPegClicked(boolean clicked)
+	{
+		pegClicked = clicked;
 	}
 	
 	private Colour colour;
@@ -44,7 +64,13 @@ public class Player {
 	}
 	
 	private GameOverStatus gamestatus;
+	
 	private Location opponentsLastLocation;
+	
+	//Getter method for the opponentsLastLocation
+	public Location getOpponentsLastLocation() {
+		return this.opponentsLastLocation;
+	}
 		
 	//Player constructor
 	public Player(){
@@ -53,6 +79,7 @@ public class Player {
 		gamestatus = null;
 		opponentsLastLocation = null;
 		opponentsColour = null;
+		playerLastPlayed = null;
 		}
 	
 	//The referee will use this method to assign our Player a Colour
@@ -62,46 +89,81 @@ public class Player {
 	}
 	
 	//This method resets the Player 
-	public void reset() {
+	public void reset() throws PlayerException{
+		try {
 		id = rand.nextInt(Integer.MAX_VALUE) + 0;
 		colour = null;
 		opponentsId = 0;
 		gamestatus = null;
 		opponentsLastLocation = null;
+		playerLastPlayed = null;
+		}
+		catch(GameStateException gse)
+		{
+			throw new PLayerException("Bad reset", gse);
+		}
 	}
 		
 	//This method will record the ID of the opponent. Not sure what we want to do with it yet
-	public void noteOpponentsId(int id) {
+	public void noteOpponentsId(int id) throws PLayerException{
+		try {
 		opponentsId = id;
+		if(this.getOpponentsId() == id) {//Checks to make sure the PLayer doesn't share their id with the opponent
+			id = rand.nextInt(Integer.MAX_VALUE) + 0;
+		}
+		}
+		catch(GameStateException gse)
+		{
+			throw new PLayerException("Bad noteOpponentsId", gse);
+		}
 	}
 	
 	//The Referee will use this to get a Location from the PLayer. Will be different for AIplayer
-	public Location requestMoveLocation() {
-		int x;
-		int y;
-		System.out.println("Please enter a row number: ");
-		x = in.nextInt();
-		System.out.println("Please enter a column number: ");
-		y = in.nextInt();
-		
-		Location moveLocation = new Location((x - 1),(y - 1));
-		return moveLocation;
+	public Location requestMoveLocation() throws InterruptedException {
+		while(true)
+		{
+			Thread.sleep(10);
+			if(pegClicked)
+			{
+				pegClicked = false;
+				break;
+			}
+		}
+		return playerLastPlayed;
 	}
 	
 	//Referee calls this method if our Location could not accept a bead
-	public Location retry() {
+	public Location retry() throws InterruptedException {
 		System.out.println("Please enter a new location.");
 		return this.requestMoveLocation();
 	}
 	
 	//Notes the last Location that the opponent played. not sure what we want to do with this yet
-	public void opponentPlays(Location ell) {
+	public void opponentPlays(Location ell) throws PLayerException{
+		try {
 		opponentsLastLocation = ell;
+		}
+		catch(GameStateException gse)
+		{
+			throw new PLayerException("Bad opponentPlays", gse);
+		}
 	}
 	
 	//Referee sends the Player a GameOverStatus when the game ends. 
-	public void noteGameOver(GameOverStatus gameoverstatus) {
+	public void noteGameOver(GameOverStatus gameoverstatus) throws PlayerException{
+		try {
 		gamestatus = gameoverstatus;
+		}
+		catch(GameStateException gse)
+		{
+			throw new PLayerException("Bad reset", gse);
+		}
+	}
+	
+	//This is the getAI method. Not sure if it belong in Player
+	public Player getAI() {
+		Player player = new AIPlayer();
+		return player;
 	}
 	
 	
