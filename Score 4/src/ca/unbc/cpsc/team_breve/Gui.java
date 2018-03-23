@@ -13,7 +13,7 @@ import javax.swing.JFrame;
 @SuppressWarnings("serial")
 public class Gui extends JFrame{
 	
-	static Gui gui;
+	
     
 	int LBpointX=50;
     int LBpointY=450;
@@ -28,13 +28,19 @@ public class Gui extends JFrame{
     int X=LBpointX+Xspace+rowDifference*3;
     int Y=LBpointY-Yspace*4;
     
-    Board board;
-    private static Player player;
+    
+    
+    private Referee myR;
+    private Board board;
+    private Location loc;
+    //private Player player;
     
     ArrayList<Integer> array = new ArrayList<Integer>();
     
     //tester
-     
+    
+    
+    /**
     Gui(){
     	
     	board = new Board();
@@ -49,12 +55,19 @@ public class Gui extends JFrame{
     }//no-argument constructor for tester 
     
     //Input board 
+    **/
+    
     
     Gui(Board b, Referee r){
+
+    	myR = r;
     	
     	board = b;
     	
-    	setBackground(Color.BLUE);
+    	
+    	
+    	//******i should not need this
+    	//myR = new Referee(board, player, player, gui);
     	//board.board[0][0].array[0]=new Bead(Colour.Black);
     	//board.board[1][2].array[0]=new Bead(Colour.White);
         setSize(500,500);
@@ -63,7 +76,7 @@ public class Gui extends JFrame{
         
         MousePressListener mousePressed = new MousePressListener();
         addMouseListener(mousePressed);
-        System.out.print("end of gui cnstr");
+        //System.out.print("end of gui cnstr");
         
     }//constructor Gui
     
@@ -105,15 +118,15 @@ public class Gui extends JFrame{
                        //change true to check null in the current position
                   //    board.getPeg(i, j).getBead(ii).getColour()!=Colour.Blank;
                 	//below it's checking the existence of the board, pegs, and beads
-                	if(board == null) System.out.println("1");
-                	if(board.board[i][j] == null) System.out.println("2");
-                	if(board.board[i][j].array[ii] == null) System.out.println("3");
+                	//if(board == null) System.out.println("1");
+                	//if(board.board[i][j] == null) System.out.println("2");
+                	//if(board.board[i][j].array[ii] == null) System.out.println("3");
                 	//if(board.board[i][j].array[ii].beadcolour == null) System.out.println("4");
                 	//you cannot check the colour of the non-existing bead!!!!!!
                     if(board.board[i][j].array[ii] != null){
                         
                            //*****important*****
-                           //change true to check black in current position
+                           //////change true to check black in current position
 
                         
                         if(board.board[i][j].array[ii].beadcolour!=Colour.Black){
@@ -163,7 +176,11 @@ public class Gui extends JFrame{
         public void mouseEntered(MouseEvent event) {}
         public void mouseExited(MouseEvent event) {}
         
+        
+        Location loc;
+        
         public boolean within(int pointX,int pointY){
+        	System.out.println(pointX+"   "+pointY);
             int X=LBpointX+Xspace+rowDifference*3;
             int Y=LBpointY-Yspace*4;
             for(int i=0;i<4;i++){
@@ -172,10 +189,49 @@ public class Gui extends JFrame{
                     if(X+1*pegWidth<=pointX&&pointX<=X+4*pegWidth){
                         if(Y-pegHeight<pointY&&pointY<Y){
                         	
+                        	//loc = new Location(i,j);
+                        	//Bead bead = new Bead();
+                        	//bead = board.checkPeg(i, j);
+                        	
+                        	//myR.saveLocation(loc);
+                        	
+                        	//loc = new Location(i,j);
+                        	//Bead human_bead = new Bead(Colour.White);
+                        	//Bead ai_bead = new Bead(Colour.Black);
                         	
                         	
+                        	
+                        	
+                        	//loc = new Location(i,j);
+                        	//myR.saveLocation(loc);
+                        	
+                        	//Bead bead = new Bead(board.checkPeg(i, j));
+                        	
+                        	//Bead beadPosition = board.checkPeg(i, j);
+                        	
+                        	//Peg peg = new Peg(i,j);
+                        	//board.board[i][j].array[peg.array.length] = new Bead(Colour.White);
+                
                         	
                         	//board.addBead(player.requestMoveLocation(), player.getColour());
+                        	//System.out.println(myR);
+                        	loc = new Location(i,j);
+                        	
+                        	board.checkPeg(i, j);
+                        	if(board.checkPeg(i, j)==null) {
+                        		
+                        		board.board[i][j].array[0] = new Bead(Colour.White);
+                        	}
+                        	
+                        	
+                        	
+                        	//Peg peg = new Peg(i,j);
+                        
+                        	//board.board[i][j].array[peg.getBead(loc)]= new Bead;
+                        	//board.board[i][j].array[1]= new Bead(Colour.White);
+                        	//System.out.println(myR + "---------------------------");
+                        	myR.saveLocation(loc);
+                        	
                         	
                         	
                         	
@@ -189,7 +245,7 @@ public class Gui extends JFrame{
                         	
                         	
                         	
-                        	//g.setColor(Color.lightGray);
+                        	
                         	
                         	
                         	
