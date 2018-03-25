@@ -8,7 +8,7 @@ public class AIPlayer extends Player{
 	Random rand = new Random();
 	
 	//This boolean will record the Referee called retry() 
-	private boolean retried = false;//Starts out false because retry() hasn't been called
+	//private boolean retried = false;//Starts out false because retry() hasn't been called
 	
 	//This will be the AIplayers copy of the board
 	Board boardCopy;
@@ -21,7 +21,7 @@ public class AIPlayer extends Player{
 	public void reset() {
 		super.reset();//Calls reset() from the superclass, Player
 		boardCopy.clearBoard();
-		retried = false;
+		//retried = false;
 	}
 	
 	//We need to override the requestMoveLocation from Player. AIplayer has to choose independent of input
@@ -41,15 +41,14 @@ public class AIPlayer extends Player{
 		row = rand.nextInt(3) + 0;
 		column = rand.nextInt(3) + 0;
 		Location location = new Location(row, column);
-		retried = false;
+		//retried = false;
 		return location;
-		
 	}
 	
 	//The override removes the System.out.println statement present in Player
 	@Override
 	public Location retry() { 
-		retried = true;//Note that the retry() method was called
+		//retried = true;//Note that the retry() method was called
 		return this.requestMoveLocation();
 	}
 	
