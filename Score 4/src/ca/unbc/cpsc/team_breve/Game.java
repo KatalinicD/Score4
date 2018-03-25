@@ -1,4 +1,4 @@
-package trial;
+package ca.unbc.cpsc.team_breve;
 
 import java.awt.Graphics;
 import java.awt.Graphics2D;
@@ -39,19 +39,23 @@ public class Game {
 		
 		while (gameContinue == 0)
 		{
-			while (g.ref.checkGameState() != GameOverStatus.WIN || g.ref.checkGameState() != GameOverStatus.LOSE || g.ref.checkGameState() != GameOverStatus.DRAW)
+			//while (g.ref.checkGameState() != GameOverStatus.WIN || g.ref.checkGameState() != GameOverStatus.LOSE || g.ref.checkGameState() != GameOverStatus.DRAW)
+			while(g.ref.checkGameState() == null)
 			{
 				int turn = 0;
 				
 				if (turn == 0)
 				{
+					g.human.setLastPlayedLocation(g.ref.getNewLocation());
 					g.ref.saveLocation(g.human.requestMoveLocation());
 					g.ref.setPlayedLocation(g.human);
+					g.human.setPegClicked(true);
 					((AIPlayer) g.opponent).placeCopyBead(g.human.getId(),g.ref.getSavedLocation());
 					
 					g.gui.repaint();
 					
 					turn++;
+					System.out.println("The turn number is now: " + turn);
 				}
 				else if (turn == 1)
 				{
