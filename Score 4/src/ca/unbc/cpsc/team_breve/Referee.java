@@ -86,7 +86,7 @@ public class Referee {
     	 newLocation = loc;
      }
      
-     public Location getNewLocation (Location loc)
+     public Location getNewLocation ()
      {
     	 return newLocation;
      }
