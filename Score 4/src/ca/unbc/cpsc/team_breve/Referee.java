@@ -1,4 +1,4 @@
-package trial;
+package ca.unbc.cpsc.team_breve;
 
 public class Referee {
     
@@ -60,12 +60,14 @@ public class Referee {
      
      public void saveLocation (Location loc)
      {
+       	 System.out.println(loc);
     	 savedLocation = loc;
      }
      
      public Location getSavedLocation()
      {
     	 return savedLocation;
+    	 
      }
      
      public void setPlayedLocation(Player players)
