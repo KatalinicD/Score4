@@ -7,6 +7,7 @@ public class Referee {
 	AIPlayer opponent;
 	Gui gui;
 	Location savedLocation = null;
+	Location newLocation = null;
 	
 	public Referee(Board board, Player player, Player ai, Gui guiMethods) 
 	{
@@ -23,7 +24,6 @@ public class Referee {
     	 human.startGameAs(Colour.White);
     	 opponent.startGameAs(Colour.Black);
     	 //currently preset like this until we get buttons in the GUI
-    	 
      }
      
      
@@ -67,7 +67,6 @@ public class Referee {
      public Location getSavedLocation()
      {
     	 return savedLocation;
-    	 
      }
      
      public void setPlayedLocation(Player players)
@@ -80,5 +79,15 @@ public class Referee {
      {
     	 human.setPlayerLastPlayed(savedLocation);
     	 human.setPegClicked(true);
+     }
+     
+     public void newLocation (Location loc)
+     {
+    	 newLocation = loc;
+     }
+     
+     public Location getNewLocation (Location loc)
+     {
+    	 return newLocation;
      }
 }
