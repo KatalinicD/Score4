@@ -2,7 +2,6 @@ package ca.unbc.cpsc.team_breve;
 
 import java.util.Scanner;
 
-import ca.unbc.cpsc.team_breve.enums.*;
 import java.util.Random;
 
 public class Player {
@@ -33,7 +32,7 @@ public class Player {
 		this.playerLastPlayed = loc;
 	}
 	
-	private boolean pegClicked;
+	private boolean pegClicked = false;
 	
 	//Setter method for pegClicked
 	public void setPegClicked(boolean clicked)
@@ -114,10 +113,11 @@ public class Player {
 			Thread.sleep(10);
 			if(pegClicked)
 			{
-				pegClicked = false;
+				pegClicked = true;
 				break;
 			}
 		}
+		pegClicked = false;
 		return playerLastPlayed;
 	}
 	
@@ -142,6 +142,4 @@ public class Player {
 		Player player = new AIPlayer();
 		return player;
 	}
-	
-	
 }
