@@ -42,6 +42,7 @@ public class AIPlayer extends Player{
 		column = rand.nextInt(3) + 0;
 		Location location = new Location(row, column);
 		//retried = false;
+		System.out.println(location);
 		return location;
 	}
 	
