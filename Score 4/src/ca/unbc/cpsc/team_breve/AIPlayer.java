@@ -29,16 +29,21 @@ public class AIPlayer extends Player{
 	public Location requestMoveLocation() {
 		int row;
 		int column;
-		if(retried) {//If retry() was called, do this
-			row = rand.nextInt(3) + 0;
-			column = rand.nextInt(3) + 0;
-			Location location = new Location(row, column);
-			retried = false;
-			return location;
-		}
-		else {//If retry() was not called, do this
-			return this.getOpponentsLastLocation();
-		}
+		//if(retried) {//If retry() was called, do this
+			//row = rand.nextInt(3) + 0;
+			//column = rand.nextInt(3) + 0;
+			//Location location = new Location(row, column);
+			//retried = false;
+			//return location;
+		//}
+		//else {//If retry() was not called, do this
+			//return this.getOpponentsLastLocation();
+		row = rand.nextInt(3) + 0;
+		column = rand.nextInt(3) + 0;
+		Location location = new Location(row, column);
+		retried = false;
+		return location;
+		
 	}
 	
 	//The override removes the System.out.println statement present in Player
