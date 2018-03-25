@@ -60,48 +60,22 @@ public class Gui extends JFrame{
     Gui(Board b, Referee r){
 
     	myR = r;
-    	
     	board = b;
     	
-    	//******i should not need this
-    	//myR = new Referee(board, player, player, gui);
+    	
     	//board.board[0][0].array[0]=new Bead(Colour.Black);
     	//board.board[1][2].array[0]=new Bead(Colour.White);
-        setSize(500,500);
+        
+    	setSize(500,500);
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         setVisible(true);
         
         
         MousePressListener mousePressed = new MousePressListener();
         addMouseListener(mousePressed);
-        //System.out.print("end of gui cnstr");
+        
         
     }//constructor Gui
-    
-    /**
-    
-    //************************this is my manu bar test***************************************
-    
-    public void addMenuBarToPane() {
-    	
-    	JMenuBar menuBar = new JMenuBar();
-    	JMenu helpMenu = new JMenu("Help");
-    	JMenuItem viewHelpMenuItem = new JMenuItem("View Help");
-    	viewHelpMenuItem.addActionListener((ActionListener) this);
-    	viewHelpMenuItem.setActionCommand("help_viewHelp");
-    	JMenuItem aboutMenuItem = new JMenuItem("About Score4");
-    	helpMenu.add(viewHelpMenuItem);
-    	helpMenu.add(aboutMenuItem);
-    	
-    	menuBar.add(helpMenu);
-    	this.setJMenuBar(menuBar);
-    	
-    }
-    
-    
-    //********************************menu bar test****************************************
-    
-    **/
     
     //painting :)
     
@@ -122,8 +96,6 @@ public class Gui extends JFrame{
         	
             for(int j = 0; j < 4; j++){
             	
-               //g.fillRect(X-pegWidth/2,Y-pegHeight,pegWidth,pegHeight);
-                
                 //drawing pegs
                  
                 g.fillRect(X+2*pegWidth,Y-pegHeight,pegWidth,pegHeight);
@@ -139,7 +111,7 @@ public class Gui extends JFrame{
                     
                        //*****important*****
                        //change true to check null in the current position
-                  //    board.getPeg(i, j).getBead(ii).getColour()!=Colour.Blank;
+                    //board.getPeg(i, j).getBead(ii).getColour()!=Colour.Blank;
                 	//below it's checking the existence of the board, pegs, and beads
                 	//if(board == null) System.out.println("1");
                 	//if(board.board[i][j] == null) System.out.println("2");
@@ -152,13 +124,13 @@ public class Gui extends JFrame{
                            //////change true to check black in current position
 
                         
-                        if(board.board[i][j].array[ii].beadcolour!=Colour.Black){
+                        if(board.board[i][j].array[ii].beadcolour==Colour.Black){
                         	
                             g.setColor(Color.BLACK);
                             g.fillOval(centerX-r,centerY-r,r*2,r*2);
                             g.setColor(Color.GRAY);
 
-                        }else if(board.board[i][j].array[ii].beadcolour!=Colour.White){
+                        }else if(board.board[i][j].array[ii].beadcolour==Colour.White){
                             g.setColor(Color.WHITE);
                             g.fillOval(centerX-r,centerY-r,r*2,r*2);
                             g.setColor(Color.GRAY);
@@ -186,6 +158,8 @@ public class Gui extends JFrame{
     //inner class MouseListener
     
     class MousePressListener implements MouseListener{
+    	
+    	
 
 		public void mousePressed(MouseEvent event){
             within(event.getX(),event.getY());
@@ -199,10 +173,10 @@ public class Gui extends JFrame{
         public void mouseEntered(MouseEvent event) {}
         public void mouseExited(MouseEvent event) {}
         
-        
-        //Location loc;
-        
         public boolean within(int pointX,int pointY){
+        	
+        	
+        	
         	System.out.println(pointX+"   "+pointY);
             int X=LBpointX+Xspace+rowDifference*3;
             int Y=LBpointY-Yspace*4;
@@ -211,82 +185,26 @@ public class Gui extends JFrame{
 
                     if(X+1*pegWidth<=pointX&&pointX<=X+4*pegWidth){
                         if(Y-pegHeight<pointY&&pointY<Y){
+                    
+                        	board.addBead(i,j, Colour.White);
                         	
-                        	//loc = new Location(i,j);
-                        	//Bead bead = new Bead();
-                        	//bead = board.checkPeg(i, j);
+                        	loc = new Location(i, j);
+                        	i = loc.getRow();
+                        	j = loc.getColumn();
                         	
-                        	//myR.saveLocation(loc);
+                        	System.out.println(i+" "+j+"----------------");
                         	
-                        	//loc = new Location(i,j);
-                        	//Bead human_bead = new Bead(Colour.White);
-                        	//Bead ai_bead = new Bead(Colour.Black);
+                        	myR.saveLocation(loc);
                         	
-                        	
-                        	//loc = new Location(i,j);
-                        	//myR.saveLocation(loc);
-                        	
-                        	//Bead bead = new Bead(board.checkPeg(i, j));
-                        	
-                        	//Bead beadPosition = board.checkPeg(i, j);
-                        	
-                        	//Peg peg = new Peg(i,j);
-                        	//board.board[i][j].array[0] = new Bead(Colour.White);
-                
-                        	
-                        	//board.addBead(player.requestMoveLocation(), player.getColouboadr());
-                        	//System.out.println(myR);
-                        	//loc = new Location(i,j);
-                        	//Bead bb = new Bead(Colour.White);
-                        	//bb = board.checkPeg(i, j);
-                        	
-                        	//System.out.println(bb);
-                        	//board.checkPeg(i, j);
-                        	
-                        	//********************************************************************
-                        	
-                        	
-                        	
-                        	board.addBead(i,j, Colour.Black);
-                        	
-                        	
-                        	/**
-                        	if(board.checkPeg(i, j)!=null) {
-                        		
-                        		//Bead bb = new Bead(Colour.Black);
-                        		//bb = board.checkPeg(i, j);
-                        		
-                        		//System.out.println(bb.toString());
-                        		
-                        		//board.addBead(i, j, Colour.White);
-                        		board.board[i][j].array[0] = new Bead(Colour.Black);
-                        		System.out.println(myR.getSavedLocation());
-                        		                      		
-                        		
-                        		myR.saveLocation(loc);
-                        	}
-                        	               
-                        	
-                        	//Peg peg = new Peg(i,j);
-                        
-                        	//board.board[i][j].array[2]= new Bead(Colour.Black);
+                        	System.out.println(loc);
+                        	//System.out.println(loc);
+                        	board.board[i][j].array[2]= new Bead(Colour.Black);
                         	//board.board[i][j].array[1]= new Bead(Colour.Black);
-                        	//System.out.println(myR + "---------------------------");
-                        	
-    
-                        	**/
-                            /*
-                               important
-                               ADD THE METHOD OF ADDBEAD HERE
-                               CHANGE THE COLOR YOU NEED HERE
-
-                             */
-                 
-                        	
+              
                             System.out.println(i+" "+j);
+                           
                             return true;
-                            
-                            
+                   
                         }
                     }
                     X=X+Xspace;
@@ -299,8 +217,4 @@ public class Gui extends JFrame{
         
     }  
         
-       //public static void main(String[] lulu){
-    	
-        //gui = new Gui();
-    //}// method main
 }// class Gui
