@@ -39,18 +39,27 @@ public class Game {
 		
 		while (gameContinue == 0)
 		{
+			int turn = 0;
 			//while (g.ref.checkGameState() != GameOverStatus.WIN || g.ref.checkGameState() != GameOverStatus.LOSE || g.ref.checkGameState() != GameOverStatus.DRAW)
 			while(g.ref.checkGameState() == null)
 			{
-				int turn = 0;
 				
 				if (turn == 0)
 				{
-					g.human.setLastPlayedLocation(g.ref.getNewLocation());
+					//g.human.setPlayerLastPlayed(g.ref.getNewLocation());
+					//System.out.println(1);
+					//g.human.setPegClicked(true);
+					/*System.out.println(2);
 					g.ref.saveLocation(g.human.requestMoveLocation());
+					System.out.println(3);
 					g.ref.setPlayedLocation(g.human);
+					System.out.println(4);
 					g.human.setPegClicked(true);
+					System.out.println(5);
 					((AIPlayer) g.opponent).placeCopyBead(g.human.getId(),g.ref.getSavedLocation());
+					System.out.println(6);*/
+					g.human.requestMoveLocation();
+					
 					
 					g.gui.repaint();
 					
@@ -66,6 +75,7 @@ public class Game {
 					g.gui.repaint();
 					
 					turn = 0;
+					System.out.println("ai move");
 				}
 				
 			}

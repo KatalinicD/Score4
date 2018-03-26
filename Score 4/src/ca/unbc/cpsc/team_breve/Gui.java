@@ -1,4 +1,4 @@
-package trial;
+package ca.unbc.cpsc.team_breve;
 
 import java.awt.*;
 import java.awt.event.MouseListener;
@@ -195,6 +195,10 @@ public class Gui extends JFrame{
                         	System.out.println(i+" "+j+"----------------");
                         	
                         	myR.saveLocation(loc);
+                        	myR.human.setPlayerLastPlayed(loc);
+                        	myR.human.setPegClicked(true);
+                        	
+                        	
                         	
                         	System.out.println(loc);
                         	//System.out.println(loc);
