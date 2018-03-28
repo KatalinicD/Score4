@@ -162,7 +162,12 @@ public class Gui extends JFrame{
     	
 
 		public void mousePressed(MouseEvent event){
-            within(event.getX(),event.getY());
+           // try {
+				within(event.getX(),event.getY());
+			//} catch (InterruptedException e) {
+				// TODO Auto-generated catch block
+				//e.printStackTrace();
+			//}
             repaint();
         }
         
@@ -173,7 +178,7 @@ public class Gui extends JFrame{
         public void mouseEntered(MouseEvent event) {}
         public void mouseExited(MouseEvent event) {}
         
-        public boolean within(int pointX,int pointY){
+        public boolean within(int pointX,int pointY) {
         	
         	
         	
@@ -186,7 +191,9 @@ public class Gui extends JFrame{
                     if(X+1*pegWidth<=pointX&&pointX<=X+4*pegWidth){
                         if(Y-pegHeight<pointY&&pointY<Y){
                     
+                        	
                         	board.addBead(i,j, Colour.White);
+                        	
                         	
                         	loc = new Location(i, j);
                         	i = loc.getRow();
@@ -200,9 +207,9 @@ public class Gui extends JFrame{
                         	
                         	
                         	
-                        	System.out.println(loc);
                         	//System.out.println(loc);
-                        	board.board[i][j].array[2]= new Bead(Colour.Black);
+                        	//System.out.println(loc);
+                        	//board.board[i][j].array[2]= new Bead(Colour.Black);
                         	//board.board[i][j].array[1]= new Bead(Colour.Black);
               
                             System.out.println(i+" "+j);
