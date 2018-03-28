@@ -1,7 +1,10 @@
-package ca.unbc.cpsc.team_breve;
+package score4;
 
 import java.awt.Graphics;
+
 import java.awt.Graphics2D;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
 
 import javax.swing.JComponent;
 import javax.swing.JFrame;
@@ -85,22 +88,55 @@ public class Game {
 				JFrame frame1 = new JFrame();
 				frame1.setSize(200,100);
 				frame1.setTitle("You Win!");
-				frame1.setDefaultCloseOperation(gameContinue);
+				//frame1.setDefaultCloseOperation(gameContinue);
+
 				
 				frame1.add(winComponent);
+				frame1.addWindowListener(new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						onExit();
+					}
+
+					private void onExit() {
+						
+						frame1.dispose();
+						g.gui.repaint();
+						// TODO Auto-generated method stub
+						
+					}
+				});
 				
 				frame1.setVisible(true);
+				
+				//frame1.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+				
 			}
 			else if (g.ref.checkGameState() == GameOverStatus.LOSE)
 			{
 				JFrame frame2 = new JFrame();
 				frame2.setSize(200,100);
 				frame2.setTitle("You Lose!");
-				frame2.setDefaultCloseOperation(gameContinue);
+				
 				
 				frame2.add(loseComponent);
 				
 				frame2.setVisible(true);
+				
+				frame2.addWindowListener(new WindowAdapter() {
+					public void windowClosing(WindowEvent e) {
+						onExit();
+					}
+
+					private void onExit() {
+						
+						frame2.dispose();
+						g.gui.repaint();
+						// TODO Auto-generated method stub
+						
+					}
+				});
+				
+				//frame2.setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
 			}
 			
 			g.ref.reset();
